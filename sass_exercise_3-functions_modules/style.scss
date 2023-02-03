@@ -1,0 +1,46 @@
+@function calc_rem ($misura){
+    $rem : calc($misura/16);
+    @return $rem + rem;
+}
+
+
+div{
+    border: calc_rem(1) solid red;
+    color: green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1{
+    text-decoration: underline blue;
+    }
+}
+
+section{
+    display: flex;
+    align-items: center;
+    padding: calc_rem(16);
+}
+
+p{
+    padding: calc_rem(16);
+    text-align: center;
+}
+
+@mixin article ($border-color: green, $color: green, $font-size: calc_rem(16)){
+    border: calc_rem(1) solid $border-color;
+    color: $color;
+    font-size: $font-size;
+    
+}
+
+.blu{
+    @include article($color: blue)
+}
+
+.red{
+    @include article($color: red)
+}
+
+.green{
+    @include article($border-color: blue, $font-size: calc_rem(24))
+}
