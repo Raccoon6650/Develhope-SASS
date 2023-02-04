@@ -1,0 +1,54 @@
+@function calc_rem ($misura){
+    $rem : calc($misura/16);
+    @return $rem + rem;
+}
+
+div{
+    border: calc_rem(1) solid red;
+    color: green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1{
+    text-decoration: underline blue;
+    }
+    h2{
+        text-decoration: none;
+        border: calc_rem(1) solid red;
+        padding: calc_rem(16);
+    }
+}
+
+@mixin article ($border-color: green, $color: green, $font-size: calc_rem(16)){
+    border: calc_rem(1) solid $border-color;
+    color: $color;
+    font-size: $font-size;
+    
+}
+
+section{
+    display: flex;
+    align-items: center;
+    p{
+        padding: calc_rem(16);
+        text-align: center;
+    }
+
+}
+article{
+    &:first-child{
+        @include article($color: blue);
+    }
+    &:nth-child(2){
+        @include article($color: red);
+    }
+    &:nth-child(3){
+        @include article($color: blue);
+    }             
+    &:nth-child(4){
+        @include article($color: red);
+    }
+    &:nth-child(5){
+        @include article($border-color: blue, $font-size: calc_rem(24));
+    }
+}
