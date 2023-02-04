@@ -9,16 +9,18 @@ div{
     display: flex;
     flex-direction: column;
     align-items: center;
-    @extend h1;
-    @extend h2;
-    h1{
+}
+
+h1{
+    @extend div ;
     text-decoration: underline blue;
+    border: none;
     }
-    h2{
-        text-decoration: none;
-        border: calc_rem(1) solid red;
-        padding: calc_rem(16);
-    }
+
+h2 {
+    @extend div ;
+    padding: calc_rem(16)
+
 }
 
 @mixin article ($border-color: green, $color: green, $font-size: calc_rem(16)){
@@ -31,6 +33,7 @@ div{
 section{
     display: flex;
     align-items: center;
+    padding: calc_rem(16);
     p{
         padding: calc_rem(16);
         text-align: center;
