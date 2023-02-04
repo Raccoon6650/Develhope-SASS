@@ -23,6 +23,13 @@ section{
         padding: 1rem;
         text-align: center;
     }
+    &:last-of-type
+    article{
+        &:last-of-type{
+            @include article($border-color: blue, $font-size: 24px);
+        }
+    }
+
 
 }
 article{
@@ -37,9 +44,6 @@ article{
     }             
     &:nth-child(4){
         @include article($color: red);
-    }
-    &:nth-child(5){
-        @include article($border-color: blue, $font-size: 24px);
     }
 }
 

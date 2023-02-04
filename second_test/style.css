@@ -17,6 +17,11 @@ section p {
   padding: 1rem;
   text-align: center;
 }
+section:last-of-type article:last-of-type {
+  border: 1px solid blue;
+  color: green;
+  font-size: 24px;
+}
 
 article:first-child {
   border: 1px solid green;
@@ -37,11 +42,6 @@ article:nth-child(4) {
   border: 1px solid green;
   color: red;
   font-size: 1rem;
-}
-article:nth-child(5) {
-  border: 1px solid blue;
-  color: green;
-  font-size: 24px;
 }
 
 /*# sourceMappingURL=style.css.map */
