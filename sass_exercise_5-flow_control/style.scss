@@ -1,0 +1,110 @@
+@use "sass:color"; 
+@use "sass:map";
+
+@function calc_rem ($misura){
+    $rem : calc($misura/16);
+    @return $rem + rem;
+}
+
+@function bg_calc($color, $var, $invert:false){
+    $complement: color.complement($color: $color);
+    $adjusted: color.adjust($complement, $lightness: $var*5);
+    @return $adjusted;
+}
+
+.general_div{
+    border: calc_rem(1) solid red;
+    color: green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1{
+    @extend .general_div ;
+    text-decoration: underline blue;
+    border: none;
+    }
+
+h2 {
+    @extend .general_div ;
+    padding: calc_rem(16)
+
+}
+
+@mixin article ($border-color: green, $color: green, $font-size: calc_rem(16)){
+    border: calc_rem(1) solid $border-color;
+    color: $color;
+    font-size: $font-size;
+    
+}
+
+section{
+    display: flex;
+    align-items: center;
+    padding: calc_rem(16);
+    p{
+        padding: calc_rem(16);
+        text-align: center;
+    }
+    &:last-of-type{
+        article{
+            &:last-of-type{
+                @include article($border-color: blue, $font-size: calc_rem(24));
+            }
+        }
+    }
+    &:first-of-type{
+        article{
+            &:first-child{
+                @include article($color: blue);
+            }
+            &:nth-child(2){
+                @include article($color: red);
+            }
+            &:nth-child(3){
+                @include article($color: blue);
+            }             
+            &:nth-child(4){
+                @include article($color: red);
+            }
+        }
+    }
+}
+
+
+
+$sizes :( 
+    ".fs-1rem": 1rem,
+    ".fs-2rem": 2rem,
+    ".fs-3rem": 3rem
+);
+
+
+@each$key, $value in $sizes { 
+    #{$key}{
+        font-size: $value;
+        width: calc_rem(45);
+        height: calc_rem(45);
+        border: 1px solid red;
+
+    }
+}
+
+.contenitore{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+@for $val from 1 to 20 { 
+    .contenitore > div:nth-child(#{$val}){
+        background-color: darken(white, $val*5);
+        color: lighten(black, $val*5);
+        @if $val == 10 {
+            background-color: blue;
+            color: red;
+        }
+    }
+}
+
